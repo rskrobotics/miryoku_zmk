@@ -9,11 +9,11 @@ jobs:
     secrets: inherit
     with:
       board: '["nice_nano_v2"]'
-      # Asymmetric on purpose. LEFT uses ZMK's stock nice_view; RIGHT uses
-      # zmk-nice-oled for the spaceman. Putting zmk-nice-oled on the CENTRAL
-      # half causes Bluetooth typing lag -- see config/corne.conf.
-      shield: '["corne_left nice_view_adapter nice_view","corne_right nice_view_adapter nice_epaper"]'
-      modules: '["mctechnology17/zmk-nice-oled/main"]'
+      shield: '["corne_left nice_view_adapter nice_epaper","corne_right nice_view_adapter nice_epaper"]'
+      # Our fork, not upstream: it carries a fix for draw_background clearing
+      # only part of the square rotation buffer, which left stray dark specks
+      # on screen. Sync with upstream deliberately, re-testing on Bluetooth.
+      modules: '["rskrobotics/zmk-nice-oled/main"]'
       # ZMK is pinned rather than tracking main. ZMK main has migrated to
       # Zephyr's Hardware Model v2, which renamed the board: nice_nano_v2 no
       # longer exists and is now nice_nano with "2.0.0" as a board revision.
