@@ -9,7 +9,10 @@ jobs:
     secrets: inherit
     with:
       board: '["nice_nano_v2"]'
-      shield: '["corne_left nice_view_adapter nice_epaper","corne_right nice_view_adapter nice_epaper"]'
+      # Asymmetric on purpose: the LEFT half is built with no display shield.
+      # A display on the central half causes Bluetooth typing lag; see
+      # config/corne.conf for the measurement and the mechanism.
+      shield: '["corne_left","corne_right nice_view_adapter nice_epaper"]'
       modules: '["mctechnology17/zmk-nice-oled/main"]'
       # ZMK is pinned rather than tracking main. ZMK main has migrated to
       # Zephyr's Hardware Model v2, which renamed the board: nice_nano_v2 no
