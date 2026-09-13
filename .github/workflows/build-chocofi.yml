@@ -10,9 +10,13 @@ jobs:
     with:
       board: '["nice_nano_v2"]'
       shield: '["corne_left nice_view_adapter nice_epaper","corne_right nice_view_adapter nice_epaper"]'
-      # Our fork, not upstream: it carries a fix for draw_background clearing
-      # only part of the square rotation buffer, which left stray dark specks
-      # on screen. Sync with upstream deliberately, re-testing on Bluetooth.
+      # Upstream, not a fork. The BLE latency fix is two plain Zephyr/LVGL
+      # Kconfig symbols in config/corne_left.conf and needs no module changes.
+      # rskrobotics/zmk-nice-oled exists but is NOT used: its draw_background
+      # fix is real but invisible (the uncleared columns map off-panel), and
+      # the stray mark it was written for turned out to be the clipped
+      # modifier indicator instead. After bumping this, re-test typing latency
+      # on Bluetooth -- USB cannot show the problem.
       modules: '["mctechnology17/zmk-nice-oled/main"]'
       # ZMK is pinned rather than tracking main. ZMK main has migrated to
       # Zephyr's Hardware Model v2, which renamed the board: nice_nano_v2 no
