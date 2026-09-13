@@ -13,7 +13,7 @@ jobs:
       # Our fork, not upstream: it carries a fix for draw_background clearing
       # only part of the square rotation buffer, which left stray dark specks
       # on screen. Sync with upstream deliberately, re-testing on Bluetooth.
-      modules: '["rskrobotics/zmk-nice-oled/main"]'
+      modules: '["mctechnology17/zmk-nice-oled/main"]'
       # ZMK is pinned rather than tracking main. ZMK main has migrated to
       # Zephyr's Hardware Model v2, which renamed the board: nice_nano_v2 no
       # longer exists and is now nice_nano with "2.0.0" as a board revision.
